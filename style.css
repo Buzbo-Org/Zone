@@ -1,0 +1,598 @@
+/* ==========================================================================
+   BUZBO BRAND STYLING & DESIGN SYSTEM
+   Tone: Flat, Clean, Generous Whitespace (Swiss Editorial Style)
+   ========================================================================== */
+
+/* CSS Variables */
+:root {
+  /* Colors */
+  --color-primary: #8E0928;       /* Vivid Crimson */
+  --color-bg: #FFECD2;            /* Warm Cream / Light Orange */
+  --color-white: #FFFFFF;
+  --color-dark: #1A1A1A;
+  --color-muted: #999999;
+  --color-modal-overlay: rgba(26, 26, 26, 0.4);
+
+  /* Spacing Base Unit: 8px */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-10: 80px;
+  --space-12: 96px;
+
+  /* Typography */
+  --font-main: "Helvetica", "Arial", sans-serif;
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-dark);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Header & Navigation (Logo Enlarger & Clearance)
+   ========================================================================== */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Enlarged Crimson Logo Badge to command visual attention */
+.logo-badge {
+  background-color: var(--color-primary);
+  padding: 24px 36px; /* Spaciously sized padding */
+  border-radius: 0 0 20px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.logo-image {
+  height: 26px; /* Enlarge logo height from 18px for clarity */
+  width: auto;
+  display: block;
+}
+
+/* ==========================================================================
+   Hero Section Layout
+   ========================================================================== */
+.hero-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--space-12) + var(--space-4));
+  padding-bottom: var(--space-8);
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+.hero-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: var(--space-10); /* Huge editorial gap */
+  align-items: center;
+}
+
+/* ==========================================================================
+   Editorial Square Frame (The literal red square container)
+   ========================================================================== */
+.editorial-square-frame {
+  position: relative;
+  border: 4px solid var(--color-primary); /* Thick clean border outline */
+  padding: var(--space-6) var(--space-5);
+  background-color: transparent;
+  border-radius: 0; /* flat sharp corners */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  aspect-ratio: 1 / 1; /* exact square on desktop */
+  width: 100%;
+  max-width: 520px;
+  margin-left: auto;
+  transition: border-color 0.3s ease;
+}
+
+/* Architectural typography break tags */
+.square-label {
+  position: absolute;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  background-color: var(--color-bg);
+  padding: 0 var(--space-2);
+  user-select: none;
+}
+
+.square-label-top {
+  top: -8px;
+  left: var(--space-4);
+}
+
+.square-label-bottom {
+  bottom: -8px;
+  right: var(--space-4);
+}
+
+.editorial-square-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* H1: Heavy, tight leading, magazine cover look */
+.hero-title {
+  font-size: clamp(2.5rem, 5.25vw, 3.75rem);
+  font-weight: 700;
+  line-height: 0.85; /* tight leading */
+  letter-spacing: -0.04em;
+  color: var(--color-primary);
+  margin-bottom: var(--space-3);
+  text-transform: uppercase;
+}
+
+/* Subtitle: Helvetica Light, elegant spacing */
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 300;
+  line-height: 1.35;
+  color: var(--color-dark);
+  margin-bottom: var(--space-3);
+}
+
+/* Red Divider Line */
+.hero-divider {
+  width: 80px;
+  height: 2px;
+  background-color: var(--color-primary);
+  margin-bottom: var(--space-3);
+}
+
+/* Paragraph Content */
+.hero-paragraph-box {
+  margin-bottom: var(--space-4);
+}
+
+.hero-paragraph {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-dark);
+}
+
+.paragraph-why {
+  font-weight: 300;
+  font-style: italic; /* editorial flow */
+  margin-bottom: var(--space-2);
+}
+
+.paragraph-examples {
+  font-weight: 200; /* extra light contrast */
+}
+
+/* ==========================================================================
+   Editorial Image Collage (Cutout Picture v2 Overlay on Crimson Block)
+   ========================================================================== */
+.hero-visual-col {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.editorial-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  cursor: pointer;
+  aspect-ratio: 4 / 5; /* matches 1080x1350 aspect ratio */
+}
+
+/* Layer 1: Solid Crimson Square representing the campaign square */
+.editorial-image-offset-block {
+  position: absolute;
+  top: 10%;
+  left: 8%;
+  width: 84%;
+  height: 82%;
+  background-color: var(--color-primary); /* Solid brand crimson block */
+  border-radius: 20px; /* matches cards spec */
+  z-index: 1;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+}
+
+/* Layer 2: Main Image wrapper sitting in front */
+.editorial-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible; /* Let the transparent figure cutout stick out past borders */
+  z-index: 2;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* displays cutout proportions cleanly */
+  display: block;
+  /* subtle premium shadow to lift the transparent cutout from the background block */
+  filter: drop-shadow(0 12px 24px rgba(26, 26, 26, 0.12));
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Parallax Depth Hover Effect: Image and Square translate in opposite directions */
+.editorial-image-container:hover .editorial-image-wrapper {
+  transform: translate(-8px, -8px);
+}
+
+.editorial-image-container:hover .editorial-image-offset-block {
+  transform: translate(8px, 8px);
+}
+
+.editorial-image-container:hover .hero-image {
+  transform: scale(1.02);
+}
+
+/* ==========================================================================
+   Buttons (Luxury Letter-Spacing & Hover Transition)
+   ========================================================================== */
+.cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.btn {
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em; /* spaced tracking */
+  text-transform: uppercase;
+  height: 52px;
+  padding: 0 var(--space-4);
+  border-radius: 9999px; /* Pill shape */
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+/* Primary Button: Crimson Fill, White Text (Waitlist Button) */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: #6d071e;
+  letter-spacing: 0.16em; /* tracking expands on hover */
+  transform: translateY(-2px);
+}
+
+/* Secondary Button: White Fill, Crimson Border & Text (Read More, Follow) */
+.btn-secondary {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  letter-spacing: 0.16em; /* tracking expands on hover */
+  transform: translateY(-2px);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-sm {
+  height: 40px;
+  padding: 0 var(--space-3);
+  font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   Waitlist Popup Modal (Swiss Card Design: Cream bg, 20px radius, flat)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-modal-overlay);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: var(--space-3);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-primary);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 480px;
+  padding: var(--space-5) var(--space-5) var(--space-6);
+  position: relative;
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.active .modal-card {
+  transform: scale(1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--color-primary);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background-color: rgba(142, 9, 40, 0.1);
+}
+
+.modal-header {
+  margin-bottom: var(--space-4);
+}
+
+.modal-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-1);
+}
+
+.modal-subtitle {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--color-dark);
+}
+
+.waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-input {
+  width: 100%;
+  height: 52px;
+  border-radius: 26px;
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-white);
+  padding: 0 var(--space-3);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  color: var(--color-dark);
+  outline: none;
+  transition: background-color 0.2s ease;
+}
+
+.form-input:focus {
+  background-color: #fff9f0;
+}
+
+/* Success & Error State overlays */
+.modal-status-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-4) 0;
+}
+
+.status-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+.success-state .status-icon {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.success-state h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.success-state p {
+  font-weight: 300;
+  color: var(--color-dark);
+  line-height: 1.5;
+}
+
+.error-state .status-icon {
+  border: 3px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.error-state h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.error-state p {
+  font-weight: 300;
+  color: var(--color-dark);
+  margin-bottom: var(--space-4);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+/* Tablet & Smaller Screens */
+@media (max-width: 1023px) {
+  .hero-section {
+    padding-top: calc(var(--space-12) + var(--space-2));
+    padding-bottom: var(--space-6);
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    justify-items: center;
+  }
+
+  .site-header {
+    justify-content: center;
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+
+  .logo-badge {
+    border-radius: 0 0 16px 16px;
+    padding: 16px 28px;
+  }
+
+  .logo-image {
+    height: 22px;
+  }
+
+  .editorial-square-frame {
+    aspect-ratio: auto; /* Allow auto height on tablet/mobile so text doesn't overflow */
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .hero-visual-col {
+    order: -1; /* Place illustration above text on mobile */
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .editorial-image-container {
+    max-width: 320px;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 580px) {
+  .hero-section {
+    padding-top: calc(var(--space-10) + var(--space-6));
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+    padding-bottom: var(--space-6);
+  }
+
+  .editorial-square-frame {
+    border-width: 4px;
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .hero-title {
+    font-size: clamp(2.15rem, 8vw, 2.75rem);
+  }
+
+  .cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .modal-card {
+    padding: var(--space-4) var(--space-3) var(--space-5);
+  }
+}

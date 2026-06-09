@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>BUZBO — Hey Risk Taker</title>
+  <meta name="description" content="Every meaningful thing starts with a small social risk. Step into the square most people walk past. Join the Buzbo waitlist today.">
+  
+  <!-- OpenGraph Meta Tags for Social Sharing -->
+  <meta property="og:title" content="BUZBO — Hey Risk Taker">
+  <meta property="og:description" content="Every meaningful thing starts with a small social risk. Step into the square most people walk past.">
+  <meta property="og:image" content="53.png">
+  <meta property="og:type" content="website">
+  
+  <!-- Google Analytics Tag -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" id="ga-script-tag"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // Note: Replace G-XXXXXXXXXX with your actual Google Analytics Measurement ID
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Minimal Header / Brand Bar -->
+  <header id="site-header" class="site-header">
+    <div class="logo-badge" id="logo-badge-container">
+      <img src="buzbo_namelogo_cream.png" alt="BUZBO Logo" class="logo-image" id="logo-main-img">
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main id="main-content">
+    <section class="hero-section" id="hero-campaign-section">
+      <div class="hero-container">
+        
+        <!-- Left Side: Editorial Square Frame containing text & CTAs -->
+        <div class="editorial-square-frame" id="text-square-frame">
+          <!-- Editorial architectural design labels at corners -->
+          <span class="square-label square-label-top">BUZBO CAMPAIGN &copy; 2026</span>
+          <span class="square-label square-label-bottom">STEP INTO THE SQUARE</span>
+          
+          <div class="editorial-square-content">
+            <h1 class="hero-title" id="hero-main-title">HEY RISK TAKER.</h1>
+            <p class="hero-subtitle" id="hero-main-subtitle">You stepped into a square that most people walked past.</p>
+            
+            <div class="hero-divider"></div>
+            
+            <div class="hero-paragraph-box">
+              <p class="hero-paragraph paragraph-why" id="hero-paragraph-why">
+                Why? Because every meaningful thing starts with a small social risk.
+              </p>
+              <p class="hero-paragraph paragraph-examples" id="hero-paragraph-list">
+                Meeting someone. Starting something. Applying for the role. Sending the message. Joining the conversation. Most people wait until they feel ready.
+              </p>
+            </div>
+            
+            <!-- Actions / CTAs -->
+            <div class="cta-group" id="hero-cta-buttons">
+              <button class="btn btn-primary" id="btn-join-waitlist">Join Waitlist</button>
+              <a href="https://buzbo.com" target="_blank" rel="noopener" class="btn btn-secondary" id="btn-read-more">Read more</a>
+              <a href="https://www.instagram.com/joinbuzbo/" target="_blank" rel="noopener" class="btn btn-secondary" id="btn-follow">Follow</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: High-Fashion Portrait Collage Presentation -->
+        <div class="hero-visual-col" id="hero-visual-content">
+          <div class="editorial-image-container" id="image-collage-container">
+            <!-- Offset Solid Crimson Square representing the visual metaphor -->
+            <div class="editorial-image-offset-block" id="image-offset-block"></div>
+            
+            <!-- Foreground transparent cutout overlaying the crimson square -->
+            <div class="editorial-image-wrapper" id="image-wrapper-card">
+              <img src="53.png" alt="Buzbo Campaign - Person stepping into the square" class="hero-image" id="graphic-illustration-img">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Modal for Waitlist Form -->
+  <div class="modal-overlay" id="waitlist-modal" aria-hidden="true">
+    <div class="modal-card" id="waitlist-modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close-btn" id="btn-close-modal" aria-label="Close modal">&times;</button>
+      
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title">STEP INTO THE SQUARE</h2>
+        <p class="modal-subtitle">Join the waitlist to be part of the Buzbo movement.</p>
+      </div>
+
+      <!-- Waitlist Form (Formspree Integration via JavaScript) -->
+      <form id="form-waitlist" class="waitlist-form">
+        <div class="form-group">
+          <label for="input-name" class="form-label">Name</label>
+          <input type="text" id="input-name" name="name" class="form-input" placeholder="Your name" required autocomplete="name">
+        </div>
+        
+        <div class="form-group">
+          <label for="input-email" class="form-label">Email</label>
+          <input type="email" id="input-email" name="email" class="form-input" placeholder="your@email.com" required autocomplete="email">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="btn-submit-waitlist">Submit</button>
+      </form>
+
+      <!-- Success & Error States -->
+      <div class="modal-status-box success-state hidden" id="status-success">
+        <div class="status-icon">&check;</div>
+        <h3>Welcome to the square.</h3>
+        <p>You've successfully joined the waitlist. We'll be in touch soon.</p>
+      </div>
+      
+      <div class="modal-status-box error-state hidden" id="status-error">
+        <div class="status-icon">&times;</div>
+        <h3>Something went wrong.</h3>
+        <p id="error-message-text">Please check your details and try again.</p>
+        <button class="btn btn-secondary btn-sm" id="btn-retry-form">Try Again</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- External Script -->
+  <script src="script.js"></script>
+</body>
+</html>
