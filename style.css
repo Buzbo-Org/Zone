@@ -1,19 +1,31 @@
 /* ==========================================================================
    BUZBO BRAND STYLING & DESIGN SYSTEM
-   Tone: Flat, Clean, Generous Whitespace (Swiss Editorial Style)
+   Style Guide Compliance:
+   - Colors: primary #8E0928 · warm bg #FFECD2 · white #FFFFFF · dark text #1A1A1A · muted #999999
+   - Font: Helvetica Bold (700) / Light (300) / Ultralight (200) — NOT Helvetica Neue
+   - Buttons (Style Guide): primary = #8E0928 fill white text pill 52px · secondary = white fill #8E0928 border pill 52px
+   - Cards: #FFECD2 bg · border-radius 20px · no shadows · no gradients
+   - Chips: #FFECD2 bg #8E0928 text unselected · #8E0928 bg white text selected
+   - Spacing base unit: 8px
+   - Tone: flat, clean, generous whitespace — not corporate, not a dating app
    ========================================================================== */
 
-/* CSS Variables */
+/* Design Tokens & CSS Variables */
 :root {
   /* Colors */
-  --color-primary: #8E0928;       /* Vivid Crimson */
-  --color-bg: #FFECD2;            /* Warm Cream / Light Orange */
+  --color-primary: #8E0928;
+  --color-warm-bg: #FFECD2;
   --color-white: #FFFFFF;
   --color-dark: #1A1A1A;
   --color-muted: #999999;
+  
+  /* Layout Overlay */
   --color-modal-overlay: rgba(26, 26, 26, 0.4);
-
-  /* Spacing Base Unit: 8px */
+  
+  /* Fonts */
+  --font-family: "Helvetica", "Arial", sans-serif;
+  
+  /* Spacing (Base Unit: 8px) */
   --space-1: 8px;
   --space-2: 16px;
   --space-3: 24px;
@@ -23,280 +35,333 @@
   --space-8: 64px;
   --space-10: 80px;
   --space-12: 96px;
-
-  /* Typography */
-  --font-main: "Helvetica", "Arial", sans-serif;
+  --space-16: 128px;
 }
 
-/* Reset & Base Styles */
+/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-bg);
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-white);
   color: var(--color-dark);
-  font-family: var(--font-main);
+}
+
+body {
+  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
 /* ==========================================================================
-   Header & Navigation (Logo Enlarger & Clearance)
+   Header and Logo Navigation (Overlay)
    ========================================================================== */
 .site-header {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-left: var(--space-6);
-  padding-right: var(--space-6);
-  z-index: 10;
+  padding: var(--space-4) var(--space-4);
+  z-index: 100;
   pointer-events: none;
 }
 
-/* Enlarged Crimson Logo Badge to command visual attention */
-.logo-badge {
-  background-color: var(--color-primary);
-  padding: 24px 36px; /* Spaciously sized padding */
-  border-radius: 0 0 20px 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.logo-container {
+  display: inline-block;
   pointer-events: auto;
 }
 
 .logo-image {
-  height: 26px; /* Enlarge logo height from 18px for clarity */
+  height: 84px;
   width: auto;
   display: block;
+  filter: brightness(1); /* Preserve original colors */
 }
 
 /* ==========================================================================
-   Hero Section Layout
+   Section 1: Hero Section (Desktop & Mobile Adaptations)
    ========================================================================== */
 .hero-section {
+  position: relative;
   min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
-  padding-top: calc(var(--space-12) + var(--space-4));
-  padding-bottom: var(--space-8);
-  padding-left: var(--space-6);
-  padding-right: var(--space-6);
+  padding: var(--space-16) var(--space-4) var(--space-8) var(--space-4);
+  
+  /* Desktop Background Photo */
+  background-image: url('HEY RISK TAKER - V2.png');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  color: var(--color-white);
 }
 
-.hero-container {
-  max-width: 1200px;
+.hero-text-container {
   width: 100%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: var(--space-10); /* Huge editorial gap */
-  align-items: center;
-}
-
-/* ==========================================================================
-   Editorial Square Frame (The literal red square container)
-   ========================================================================== */
-.editorial-square-frame {
-  position: relative;
-  border: 4px solid var(--color-primary); /* Thick clean border outline */
-  padding: var(--space-6) var(--space-5);
-  background-color: transparent;
-  border-radius: 0; /* flat sharp corners */
+  max-width: 620px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  aspect-ratio: 1 / 1; /* exact square on desktop */
-  width: 100%;
-  max-width: 520px;
-  margin-left: auto;
-  transition: border-color 0.3s ease;
+  z-index: 2;
+  text-align: left;
 }
 
-/* Architectural typography break tags */
-.square-label {
-  position: absolute;
-  font-size: 9px;
+/* BIG Title Helvetica Bold 700 */
+.hero-title {
+  font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 700;
-  letter-spacing: 0.25em;
-  color: var(--color-primary);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-3);
   text-transform: uppercase;
-  background-color: var(--color-bg);
-  padding: 0 var(--space-2);
-  user-select: none;
 }
 
-.square-label-top {
-  top: -8px;
-  left: var(--space-4);
+/* Subtitle Helvetica Light 300 */
+.hero-subtitle {
+  font-size: clamp(1.15rem, 2.5vw, 1.6rem);
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-6);
+  opacity: 0.95;
+  max-width: 480px;
 }
 
-.square-label-bottom {
-  bottom: -8px;
-  right: var(--space-4);
+/* Hero CTAs: Outlined/Elegant to match buttons_crop.png */
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
 }
 
-.editorial-square-content {
+.btn-hero {
+  font-family: var(--font-family);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  height: 48px;
+  padding: 0 var(--space-4);
+  border-radius: 4px; /* Minimal border radius as in crop */
+  border: 1px solid var(--color-white);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.btn-hero-solid {
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  border-color: var(--color-white);
+}
+
+.btn-hero-solid:hover {
+  background-color: transparent;
+  color: var(--color-white);
+}
+
+.btn-hero-outline {
+  background-color: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.btn-hero-outline:hover {
+  background-color: var(--color-white);
+  color: var(--color-dark);
+}
+
+.inline-flex-center {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.instagram-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* ==========================================================================
+   Section 2: About / Social Risks Section (Warm cream bg #FFECD2)
+   ========================================================================== */
+.about-section {
+  background-color: var(--color-warm-bg);
+  color: var(--color-dark);
+  padding: var(--space-12) 0;
+  display: flex;
+  justify-content: center;
+}
+
+.section-container {
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 var(--space-4);
   display: flex;
   flex-direction: column;
 }
 
-/* H1: Heavy, tight leading, magazine cover look */
-.hero-title {
-  font-size: clamp(2.5rem, 5.25vw, 3.75rem);
+.editorial-label {
+  font-size: 0.75rem;
   font-weight: 700;
-  line-height: 0.85; /* tight leading */
-  letter-spacing: -0.04em;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
   color: var(--color-primary);
   margin-bottom: var(--space-3);
-  text-transform: uppercase;
 }
 
-/* Subtitle: Helvetica Light, elegant spacing */
-.hero-subtitle {
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
-  font-weight: 300;
-  line-height: 1.35;
-  color: var(--color-dark);
-  margin-bottom: var(--space-3);
-}
-
-/* Red Divider Line */
-.hero-divider {
-  width: 80px;
-  height: 2px;
-  background-color: var(--color-primary);
-  margin-bottom: var(--space-3);
-}
-
-/* Paragraph Content */
-.hero-paragraph-box {
-  margin-bottom: var(--space-4);
-}
-
-.hero-paragraph {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--color-dark);
-}
-
-.paragraph-why {
-  font-weight: 300;
-  font-style: italic; /* editorial flow */
+.about-why {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-primary);
   margin-bottom: var(--space-2);
 }
 
-.paragraph-examples {
-  font-weight: 200; /* extra light contrast */
+.about-statement {
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-5);
+  max-width: 800px;
 }
 
-/* ==========================================================================
-   Editorial Image Collage (Cutout Picture v2 Overlay on Crimson Block)
-   ========================================================================== */
-.hero-visual-col {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+/* Interactive Chips */
+.chips-wrapper {
+  margin-bottom: var(--space-6);
 }
 
-.editorial-image-container {
-  position: relative;
-  width: 100%;
-  max-width: 420px;
-  cursor: pointer;
-  aspect-ratio: 4 / 5; /* matches 1080x1350 aspect ratio */
-}
-
-/* Layer 1: Solid Crimson Square representing the campaign square */
-.editorial-image-offset-block {
-  position: absolute;
-  top: 10%;
-  left: 8%;
-  width: 84%;
-  height: 82%;
-  background-color: var(--color-primary); /* Solid brand crimson block */
-  border-radius: 20px; /* matches cards spec */
-  z-index: 1;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
-}
-
-/* Layer 2: Main Image wrapper sitting in front */
-.editorial-image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: visible; /* Let the transparent figure cutout stick out past borders */
-  z-index: 2;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* displays cutout proportions cleanly */
-  display: block;
-  /* subtle premium shadow to lift the transparent cutout from the background block */
-  filter: drop-shadow(0 12px 24px rgba(26, 26, 26, 0.12));
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Parallax Depth Hover Effect: Image and Square translate in opposite directions */
-.editorial-image-container:hover .editorial-image-wrapper {
-  transform: translate(-8px, -8px);
-}
-
-.editorial-image-container:hover .editorial-image-offset-block {
-  transform: translate(8px, 8px);
-}
-
-.editorial-image-container:hover .hero-image {
-  transform: scale(1.02);
-}
-
-/* ==========================================================================
-   Buttons (Luxury Letter-Spacing & Hover Transition)
-   ========================================================================== */
-.cta-group {
+.chips-container {
   display: flex;
   flex-wrap: wrap;
+  gap: var(--space-1.5);
+  max-width: 780px;
+}
+
+.buzbo-chip {
+  font-family: var(--font-family);
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 9999px; /* Pill */
+  border: 2px solid var(--color-primary);
+  cursor: pointer;
+  padding: 10px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  background-color: var(--color-warm-bg);
+  color: var(--color-primary);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.buzbo-chip:hover {
+  transform: translateY(-2px);
+}
+
+.buzbo-chip.selected {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.editorial-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(142, 9, 40, 0.25);
+  margin: var(--space-5) 0;
+}
+
+/* Statement Layout */
+.statement-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  max-width: 850px;
+}
+
+.statement-paragraph {
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  line-height: 1.5;
+}
+
+.light-weight {
+  font-weight: 300;
+}
+
+.bold-weight {
+  font-weight: 700;
+}
+
+.highlight-maroon {
+  color: var(--color-primary);
+  position: relative;
+}
+
+/* ==========================================================================
+   Section 3: Final CTA Section (White bg)
+   ========================================================================== */
+.final-cta-section {
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  padding: var(--space-16) 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.final-cta-heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-6);
+  color: var(--color-dark);
+}
+
+/* Style guide buttons */
+.styleguide-cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: var(--space-2);
-  margin-top: var(--space-2);
 }
 
 .btn {
-  font-family: var(--font-main);
-  font-size: 0.8rem;
+  font-family: var(--font-family);
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.12em; /* spaced tracking */
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   height: 52px;
-  padding: 0 var(--space-4);
-  border-radius: 9999px; /* Pill shape */
+  padding: 0 var(--space-5);
+  border-radius: 9999px; /* Pill */
   border: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  max-width: 380px;
   white-space: nowrap;
 }
 
-/* Primary Button: Crimson Fill, White Text (Waitlist Button) */
+/* Primary style: Vivid Crimson fill, white text, 52px pill */
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-white);
@@ -304,11 +369,10 @@ html, body {
 
 .btn-primary:hover {
   background-color: #6d071e;
-  letter-spacing: 0.16em; /* tracking expands on hover */
   transform: translateY(-2px);
 }
 
-/* Secondary Button: White Fill, Crimson Border & Text (Read More, Follow) */
+/* Secondary style: White fill, Crimson border, 52px pill */
 .btn-secondary {
   background-color: var(--color-white);
   border: 2px solid var(--color-primary);
@@ -318,12 +382,12 @@ html, body {
 .btn-secondary:hover {
   background-color: var(--color-primary);
   color: var(--color-white);
-  letter-spacing: 0.16em; /* tracking expands on hover */
   transform: translateY(-2px);
 }
 
 .btn-block {
   width: 100%;
+  max-width: none;
 }
 
 .btn-sm {
@@ -332,8 +396,23 @@ html, body {
   font-size: 0.75rem;
 }
 
+/* Footer style */
+.site-footer {
+  background-color: var(--color-white);
+  color: var(--color-muted);
+  padding: var(--space-6) 0;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.footer-container p {
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
 /* ==========================================================================
-   Waitlist Popup Modal (Swiss Card Design: Cream bg, 20px radius, flat)
+   Waitlist Popup Modal (Style Guide compliance: Warm bg, 20px radius, flat)
    ========================================================================== */
 .modal-overlay {
   position: fixed;
@@ -342,12 +421,12 @@ html, body {
   width: 100%;
   height: 100%;
   background-color: var(--color-modal-overlay);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 1000;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -360,12 +439,12 @@ html, body {
 }
 
 .modal-card {
-  background-color: var(--color-bg);
+  background-color: var(--color-warm-bg);
   border: 2px solid var(--color-primary);
-  border-radius: 20px;
+  border-radius: 20px; /* Style Guide */
   width: 100%;
-  max-width: 480px;
-  padding: var(--space-5) var(--space-5) var(--space-6);
+  max-width: 460px;
+  padding: var(--space-5) var(--space-4) var(--space-6);
   position: relative;
   transform: scale(0.95);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -375,17 +454,61 @@ html, body {
   transform: scale(1);
 }
 
+.modal-card-large {
+  max-width: 760px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--space-6) var(--space-5);
+  text-align: left;
+}
+
+.modal-body-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.risks-text-container {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1.5);
+}
+
+.risk-text-item {
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--color-dark);
+}
+
+.risk-text-footer {
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-dark);
+  margin-bottom: var(--space-3);
+}
+
+.learn-more-cta-box {
+  margin-top: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .modal-close-btn {
   position: absolute;
   top: var(--space-2);
   right: var(--space-2);
   background: none;
   border: none;
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: var(--color-primary);
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -394,15 +517,16 @@ html, body {
 }
 
 .modal-close-btn:hover {
-  background-color: rgba(142, 9, 40, 0.1);
+  background-color: rgba(142, 9, 40, 0.08);
 }
 
 .modal-header {
   margin-bottom: var(--space-4);
+  text-align: left;
 }
 
 .modal-title {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-primary);
   text-transform: uppercase;
@@ -410,7 +534,7 @@ html, body {
 }
 
 .modal-subtitle {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 300;
   color: var(--color-dark);
 }
@@ -428,7 +552,7 @@ html, body {
 }
 
 .form-label {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--color-primary);
   text-transform: uppercase;
@@ -438,22 +562,23 @@ html, body {
 .form-input {
   width: 100%;
   height: 52px;
-  border-radius: 26px;
-  border: 2px solid var(--color-primary);
+  border-radius: 4px; /* Matches blockier aesthetic of hero input */
+  border: 1px solid var(--color-primary);
   background-color: var(--color-white);
-  padding: 0 var(--space-3);
-  font-family: var(--font-main);
+  padding: 0 var(--space-2.5);
+  font-family: var(--font-family);
   font-size: 1rem;
   color: var(--color-dark);
   outline: none;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .form-input:focus {
-  background-color: #fff9f0;
+  border-width: 2px;
+  background-color: #FFFDF9;
 }
 
-/* Success & Error State overlays */
+/* Success & Error Overlay Cards */
 .modal-status-box {
   display: flex;
   flex-direction: column;
@@ -463,13 +588,13 @@ html, body {
 }
 
 .status-icon {
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: var(--space-3);
 }
@@ -480,7 +605,7 @@ html, body {
 }
 
 .success-state h3 {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--color-primary);
   text-transform: uppercase;
@@ -491,15 +616,16 @@ html, body {
   font-weight: 300;
   color: var(--color-dark);
   line-height: 1.5;
+  font-size: 0.95rem;
 }
 
 .error-state .status-icon {
-  border: 3px solid var(--color-primary);
+  border: 2px solid var(--color-primary);
   color: var(--color-primary);
 }
 
 .error-state h3 {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--color-primary);
   text-transform: uppercase;
@@ -510,6 +636,7 @@ html, body {
   font-weight: 300;
   color: var(--color-dark);
   margin-bottom: var(--space-4);
+  font-size: 0.95rem;
 }
 
 .hidden {
@@ -517,82 +644,82 @@ html, body {
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   Responsive Overrides (Desktop First / Mobile Layout Tweaks)
    ========================================================================== */
 
-/* Tablet & Smaller Screens */
+/* Mobile Adaptations */
 @media (max-width: 1023px) {
-  .hero-section {
-    padding-top: calc(var(--space-12) + var(--space-2));
-    padding-bottom: var(--space-6);
-  }
-
-  .hero-container {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-    justify-items: center;
-  }
-
-  .site-header {
-    justify-content: center;
-    padding-left: var(--space-3);
-    padding-right: var(--space-3);
-  }
-
-  .logo-badge {
-    border-radius: 0 0 16px 16px;
-    padding: 16px 28px;
-  }
-
   .logo-image {
-    height: 22px;
+    height: 60px;
   }
 
-  .editorial-square-frame {
-    aspect-ratio: auto; /* Allow auto height on tablet/mobile so text doesn't overflow */
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .hero-visual-col {
-    order: -1; /* Place illustration above text on mobile */
-    justify-content: center;
-    width: 100%;
+  .hero-section {
+    background-image: url('HEY RISK TAKER (Phone size).png');
+    background-position: center center;
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out title and buttons */
+    align-items: flex-start;
   }
   
-  .editorial-image-container {
-    max-width: 320px;
+  .hero-text-container {
+    height: 100%;
+    justify-content: space-between;
+    padding-top: var(--space-6);
+  }
+  
+  /* Natural breaks for Title on phone */
+  .hero-title {
+    font-size: clamp(2.4rem, 8vw, 3.6rem);
+    margin-bottom: var(--space-2);
+  }
+  
+  .hero-subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 0;
+  }
+  
+  /* Stacking CTAs at the bottom */
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-1.5);
+    margin-top: var(--space-10);
+    padding-bottom: var(--space-3);
+  }
+  
+  .btn-hero {
+    width: 100%;
+  }
+
+  .statement-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .styleguide-cta-group {
+    width: 100%;
+    padding: 0 var(--space-2);
   }
 }
 
-/* Mobile Devices */
-@media (max-width: 580px) {
+@media (min-width: 1024px) {
+  /* Extra space for editorial layout on large screens */
+  .site-header {
+    padding: var(--space-6) var(--space-8);
+  }
+  
   .hero-section {
-    padding-top: calc(var(--space-10) + var(--space-6));
-    padding-left: var(--space-3);
-    padding-right: var(--space-3);
-    padding-bottom: var(--space-6);
+    padding-left: var(--space-12);
+  }
+  
+  .hero-text-container {
+    padding-top: var(--space-4);
   }
 
-  .editorial-square-frame {
-    border-width: 4px;
-    padding: var(--space-4) var(--space-3);
-  }
-
-  .hero-title {
-    font-size: clamp(2.15rem, 8vw, 2.75rem);
-  }
-
-  .cta-group {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .btn {
-    width: 100%;
-  }
-
-  .modal-card {
-    padding: var(--space-4) var(--space-3) var(--space-5);
+  .statement-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
   }
 }

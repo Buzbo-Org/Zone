@@ -11,18 +11,17 @@
   <!-- OpenGraph Meta Tags for Social Sharing -->
   <meta property="og:title" content="BUZBO — Hey Risk Taker">
   <meta property="og:description" content="Every meaningful thing starts with a small social risk. Step into the square most people walk past.">
-  <meta property="og:image" content="53.png">
+  <meta property="og:image" content="HEY RISK TAKER - V2.png">
   <meta property="og:type" content="website">
   
-  <!-- Google Analytics Tag -->
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" id="ga-script-tag"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1SG1DR4NV"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    // Note: Replace G-XXXXXXXXXX with your actual Google Analytics Measurement ID
-    gtag('config', 'G-XXXXXXXXXX');
+
+    gtag('config', 'G-E1SG1DR4NV');
   </script>
 
   <!-- External Stylesheet -->
@@ -30,64 +29,89 @@
 </head>
 <body>
 
-  <!-- Minimal Header / Brand Bar -->
+  <!-- Header Section with Logo on top left -->
   <header id="site-header" class="site-header">
-    <div class="logo-badge" id="logo-badge-container">
+    <div class="logo-container" id="logo-badge-container">
       <img src="buzbo_namelogo_cream.png" alt="BUZBO Logo" class="logo-image" id="logo-main-img">
     </div>
   </header>
 
-  <!-- Main Content Area -->
+  <!-- Main Content -->
   <main id="main-content">
+    
+    <!-- SECTION 1: HERO (Full viewport height, responsive background photo) -->
     <section class="hero-section" id="hero-campaign-section">
-      <div class="hero-container">
+      <div class="hero-text-container">
+        <h1 class="hero-title" id="hero-main-title">HEY RISK TAKER.</h1>
+        <p class="hero-subtitle" id="hero-main-subtitle">You stepped into a square that most people walked past.</p>
         
-        <!-- Left Side: Editorial Square Frame containing text & CTAs -->
-        <div class="editorial-square-frame" id="text-square-frame">
-          <!-- Editorial architectural design labels at corners -->
-          <span class="square-label square-label-top">BUZBO CAMPAIGN &copy; 2026</span>
-          <span class="square-label square-label-bottom">STEP INTO THE SQUARE</span>
-          
-          <div class="editorial-square-content">
-            <h1 class="hero-title" id="hero-main-title">HEY RISK TAKER.</h1>
-            <p class="hero-subtitle" id="hero-main-subtitle">You stepped into a square that most people walked past.</p>
-            
-            <div class="hero-divider"></div>
-            
-            <div class="hero-paragraph-box">
-              <p class="hero-paragraph paragraph-why" id="hero-paragraph-why">
-                Why? Because every meaningful thing starts with a small social risk.
-              </p>
-              <p class="hero-paragraph paragraph-examples" id="hero-paragraph-list">
-                Meeting someone. Starting something. Applying for the role. Sending the message. Joining the conversation. Most people wait until they feel ready.
-              </p>
-            </div>
-            
-            <!-- Actions / CTAs -->
-            <div class="cta-group" id="hero-cta-buttons">
-              <button class="btn btn-primary" id="btn-join-waitlist">Join Waitlist</button>
-              <a href="https://buzbo.com" target="_blank" rel="noopener" class="btn btn-secondary" id="btn-read-more">Read more</a>
-              <a href="https://www.instagram.com/joinbuzbo/" target="_blank" rel="noopener" class="btn btn-secondary" id="btn-follow">Follow</a>
-            </div>
-          </div>
+        <!-- Elegant Hero CTAs -->
+        <div class="hero-cta-group" id="hero-cta-buttons">
+          <button class="btn-hero btn-hero-solid" id="btn-hero-learn-more">LEARN MORE</button>
+          <button class="btn-hero btn-hero-outline" id="btn-hero-join-waitlist">JOIN WAITLIST</button>
+          <a href="https://www.instagram.com/joinbuzbo/" target="_blank" rel="noopener" class="btn-hero btn-hero-outline inline-flex-center" id="btn-hero-follow">
+            <svg class="instagram-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>FOLLOW</span>
+          </a>
         </div>
-
-        <!-- Right Side: High-Fashion Portrait Collage Presentation -->
-        <div class="hero-visual-col" id="hero-visual-content">
-          <div class="editorial-image-container" id="image-collage-container">
-            <!-- Offset Solid Crimson Square representing the visual metaphor -->
-            <div class="editorial-image-offset-block" id="image-offset-block"></div>
-            
-            <!-- Foreground transparent cutout overlaying the crimson square -->
-            <div class="editorial-image-wrapper" id="image-wrapper-card">
-              <img src="53.png" alt="Buzbo Campaign - Person stepping into the square" class="hero-image" id="graphic-illustration-img">
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
+
   </main>
+
+  <!-- Popup Modal: Learn More -->
+  <div class="modal-overlay" id="learn-more-modal" aria-hidden="true">
+    <div class="modal-card modal-card-large" id="learn-more-modal-card" role="dialog" aria-modal="true" aria-labelledby="learn-more-title">
+      <button class="modal-close-btn" id="btn-close-learn-more" aria-label="Close modal">&times;</button>
+      
+      <div class="modal-body-content">
+
+        
+        <h2 class="about-why" id="learn-more-title">Why?</h2>
+        <p class="about-statement">
+          Because every meaningful thing starts with a small social risk.
+        </p>
+
+        <!-- Social risks as plain text paragraphs instead of buttons/chips -->
+        <div class="risks-text-container">
+          <p class="risk-text-item">Meeting someone.</p>
+          <p class="risk-text-item">Starting something.</p>
+          <p class="risk-text-item">Applying for the role.</p>
+          <p class="risk-text-item">Sending the message.</p>
+          <p class="risk-text-item">Joining the conversation.</p>
+        </div>
+
+        <p class="risk-text-footer">Most people wait until they feel ready.</p>
+
+        <div class="editorial-divider"></div>
+
+        <!-- Statements -->
+        <div class="statement-grid">
+          <div class="statement-paragraph light-weight">
+            Nothing was stopping them. Nothing was forcing you. Yet you stepped in.
+          </div>
+          <div class="statement-paragraph bold-weight">
+            Most people wait until they feel ready. <span class="highlight-maroon">The people who grow usually move first.</span>
+          </div>
+        </div>
+
+        <div class="editorial-divider"></div>
+
+        <div class="learn-more-cta-box">
+          <h3 class="final-cta-heading">BUZBO exists for those people.</h3>
+          <!-- Style guide compliant buttons inside the popup -->
+          <div class="styleguide-cta-group">
+            <button class="btn btn-primary" id="btn-modal-join-waitlist">JOIN THE WAITLIST</button>
+            <a href="https://www.instagram.com/joinbuzbo/" target="_blank" rel="noopener" class="btn btn-secondary" id="btn-modal-follow">FOLLOW OUR JOURNEY</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Interactive Modal for Waitlist Form -->
   <div class="modal-overlay" id="waitlist-modal" aria-hidden="true">
